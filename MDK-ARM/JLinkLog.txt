@@ -1,0 +1,103 @@
+TA078 000:005.373   SEGGER J-Link V8.56 Log File
+TA078 000:005.530   DLL Compiled: Jul 30 2025 11:58:21
+TA078 000:005.551   Logging started @ 2025-08-01 03:41
+TA078 000:005.570   Process: D:\keil\UV4\UV4.exe
+TA078 000:005.592 - 5.587ms 
+TA078 000:005.616 JLINK_SetWarnOutHandler(...)
+TA078 000:005.632 - 0.018ms 
+TA078 000:005.651 JLINK_OpenEx(...)
+TA078 000:010.169   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+TA078 000:011.395   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+TA078 000:011.603   Decompressing FW timestamp took 144 us
+TA078 000:019.913   Hardware: V9.40
+TA078 000:019.967   S/N: 69405038
+TA078 000:020.002   OEM: SEGGER
+TA078 000:020.038   Feature(s): RDI, GDB, FlashDL, FlashBP, JFlash
+TA078 000:020.886   Bootloader: (FW returned invalid version)
+TA078 000:022.066   TELNET listener socket opened on port 19021
+TA078 000:022.202   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+TA078 000:022.483   WEBSRV Webserver running on local port 19080
+TA078 000:022.735   Looking for J-Link GUI Server exe at: D:\keil\ARM\Segger\JLinkGUIServer.exe
+TA078 000:022.890   Looking for J-Link GUI Server exe at: E:\jlink\JLink_V856\JLinkGUIServer.exe
+TA078 000:022.928   Forking J-Link GUI Server: E:\jlink\JLink_V856\JLinkGUIServer.exe
+TA078 000:340.710   J-Link GUI Server info: "J-Link GUI server V8.56 "
+TA078 000:349.523 - 343.858ms returns "O.K."
+TA078 000:349.629 JLINK_GetEmuCaps()
+TA078 000:349.673 - 0.041ms returns 0xB9FF7BBF
+TA078 000:349.715 JLINK_TIF_GetAvailable(...)
+TA078 000:350.423 - 0.709ms 
+TA078 000:350.510 JLINK_SetErrorOutHandler(...)
+TA078 000:350.551 - 0.041ms 
+TA078 000:350.624 JLINK_ExecCommand("ProjectFile = "C:\Users\18033\Desktop\diansai\yuntai_ver1.1\MDK-ARM\JLinkSettings.ini"", ...). 
+TA078 000:367.527   Ref file found at: D:\keil\ARM\Segger\JLinkDevices.ref
+TA078 000:367.640   REF file references invalid XML file: E:\jlink\JLink_V856\JLinkDevices.xml
+TA078 000:369.048 - 18.426ms returns 0x00
+TA078 000:371.898 JLINK_ExecCommand("Device = STM32H723ZGTx", ...). 
+TA078 000:373.156   Flash bank @ 0x08000000: SFL: Parsing sectorization info from ELF file
+TA078 000:373.193     FlashDevice.SectorInfo[0]: .SectorSize = 0x00020000, .SectorStartAddr = 0x00000000
+TA078 000:373.222   FlashBank @0x08000000: Sectorization info from SFL ELF file ignored because sectorization override from DLL / XML file is active.
+TA078 000:373.626   Flash bank @ 0x90000000: SFL: Parsing sectorization info from ELF file
+TA078 000:373.661     FlashDevice.SectorInfo[0]: .SectorSize = 0x00010000, .SectorStartAddr = 0x00000000
+TA078 000:385.338   Device "STM32H723ZG" selected.
+TA078 000:385.769 - 13.830ms returns 0x00
+TA078 000:385.799 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+TA078 000:385.828   ERROR: Unknown command
+TA078 000:385.855 - 0.034ms returns 0x01
+TA078 000:385.874 JLINK_GetHardwareVersion()
+TA078 000:385.901 - 0.026ms returns 94000
+TA078 000:385.919 JLINK_GetDLLVersion()
+TA078 000:385.936 - 0.016ms returns 85600
+TA078 000:385.955 JLINK_GetOEMString(...)
+TA078 000:385.973 JLINK_GetFirmwareString(...)
+TA078 000:385.988 - 0.015ms 
+TA078 000:396.861 JLINK_GetDLLVersion()
+TA078 000:396.915 - 0.053ms returns 85600
+TA078 000:396.935 JLINK_GetCompileDateTime()
+TA078 000:396.952 - 0.017ms 
+TA078 000:399.950 JLINK_GetFirmwareString(...)
+TA078 000:399.998 - 0.047ms 
+TA078 000:402.200 JLINK_GetHardwareVersion()
+TA078 000:402.237 - 0.037ms returns 94000
+TA078 000:404.410 JLINK_GetSN()
+TA078 000:404.453 - 0.042ms returns 69405038
+TA078 000:407.830 JLINK_GetOEMString(...)
+TA078 000:412.967 JLINK_TIF_Select(JLINKARM_TIF_JTAG)
+TA078 000:414.449 - 1.488ms returns 0x00
+TA078 000:414.480 JLINK_HasError()
+TA078 000:414.505 JLINK_SetSpeed(5000)
+TA078 000:414.688 - 0.184ms 
+TA078 000:414.710 JLINK_GetIdData(pIdData)
+TA078 000:418.027   ConfigTargetSettings() start
+TA078 000:418.084    J-Link Script File: Executing ConfigTargetSettings()
+TA078 000:420.506   ConfigTargetSettings() end - Took 42us
+TA078 000:422.578   InitTarget() start
+TA078 000:422.620    J-Link Script File: Executing InitTarget()
+TA078 000:425.745   JTAG selected. Identifying JTAG Chain...
+TA078 000:429.597   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+TA078 000:432.880   Error: Scanning JTAG chain failed.
+TA078 000:435.006   Can not attach to CPU. Trying connect under reset.
+TA078 000:489.959   JTAG selected. Identifying JTAG Chain...
+TA078 000:497.928   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+TA078 000:505.543   Error: Scanning JTAG chain failed.
+TA078 000:514.822   Connecting to CPU via connect under reset failed.
+TA078 000:576.051   InitTarget() end - Took 144ms
+TA078 000:582.627   Connect failed. Resetting via Reset pin and trying again.
+TA078 000:649.749   ConfigTargetSettings() start
+TA078 000:649.868    J-Link Script File: Executing ConfigTargetSettings()
+TA078 000:654.147   ConfigTargetSettings() end - Took 67us
+TA078 000:656.480   InitTarget() start
+TA078 000:656.523    J-Link Script File: Executing InitTarget()
+TA078 000:658.766   JTAG selected. Identifying JTAG Chain...
+TA078 000:662.578   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+TA078 000:665.537   Error: Scanning JTAG chain failed.
+TA078 000:668.297   Can not attach to CPU. Trying connect under reset.
+TA078 000:732.064   JTAG selected. Identifying JTAG Chain...
+TA078 000:739.027   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+TA078 000:749.629   Error: Scanning JTAG chain failed.
+TA078 000:759.616   Connecting to CPU via connect under reset failed.
+TA078 000:820.270   InitTarget() end - Took 154ms
+TA078 000:820.399 - 405.688ms 
+TA078 002:720.548 JLINK_Close()
+TA078 002:734.034 - 13.485ms
+TA078 002:734.082   
+TA078 002:734.099   Closed

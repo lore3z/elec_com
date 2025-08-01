@@ -1,0 +1,14 @@
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+pid_dji\stream_buffer.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+pid_dji\stream_buffer.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+pid_dji\stream_buffer.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+pid_dji\stream_buffer.o: ../Inc/FreeRTOSConfig.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+pid_dji\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h

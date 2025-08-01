@@ -1,0 +1,12 @@
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+pid_dji\list.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+pid_dji\list.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+pid_dji\list.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+pid_dji\list.o: ../Inc/FreeRTOSConfig.h
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+pid_dji\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
