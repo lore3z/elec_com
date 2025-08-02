@@ -94,11 +94,14 @@ uint8_t upper_cnt=0;
 float diff[2];
 int m6020_init=0;
 int flag=0;
+int flag_x=0;
+int cnt_x=0;
 int ecd_count=0;
 MPU6050_t MPU6050;
 float gz_sum,gz_aver;
 int cnt_gz=0;
 float yaw;
+int roat_ang=0;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -183,12 +186,13 @@ int main(void)
 	PID_Angle_S_Para_Init(2, 1 , 10 , 3 , 0.01);
   PID_Angle_A_Para_Init(2, 1 , 0.3 , 0 , 0);
 	PID_Angle_S_Para_Init(2, 5 , 70 , 30 , 0.1);
-	PID_Angle_A_Para_Init(2, 5 , 0.3 , 0 , 0);
+	PID_Angle_A_Para_Init(2, 5 , 0.4 , 0 , 0);
 
-	rtP.DX_P=0.005;//6020
+	rtP.DX_P=0.01;//6020
 	rtP.DX_I=0;
 	rtP.DX_D=0;
-	rtP.DY_P=0.01;
+	rtP.DY_P=0.2
+	;
 	rtP.DY_I=0;
 	rtP.DY_D=0;
 	
@@ -198,7 +202,7 @@ int main(void)
 					  ANG, VEL, VEL, VEL, ANG, ANG, ANG ); 
 
 	memset(UART2_TX_BUF,0,sizeof(UART2_TX_BUF));
-//	while (MPU6050_Init(&hi2c1) == 1) ;
+	while (MPU6050_Init(&hi2c1) == 1) ;
 
 
 
@@ -209,12 +213,12 @@ int main(void)
   while (1)
   {
 
-//		MPU6050_Read_All(&hi2c1, &MPU6050);
-//		if(cnt_gz<10000){
-//			gz_sum+=MPU6050.Gz;
-//			gz_aver=gz_sum/cnt_gz;
-//			cnt_gz++;
-//		}
+		MPU6050_Read_All(&hi2c1, &MPU6050);
+		if(cnt_gz<10000){
+			gz_sum+=MPU6050.Gz;
+			gz_aver=gz_sum/cnt_gz;
+			cnt_gz++;
+		}
 		if (motor_data_can2[4]->activate) {
 				if (motor_data_can2[4]->ecd == motor_data_can2[4]->last_ecd) {
 						ecd_count++;               
@@ -222,13 +226,25 @@ int main(void)
 						ecd_count = 0;            
 						motor_data_can2[4]->last_ecd = motor_data_can2[4]->ecd;
 				}
-\
+
 				if (ecd_count >= 10 && flag == 0) {
 						m6020_init = motor_data_can2[4]->ecd + motor_data_can2[4]->circle * 8191;
 						rtU.status_CH2_5=ANG;
 						flag = 1;                 
 				}
 		}
+    if(flag == 1&&flag_x==0){
+      if(float1==-999&&float2==-999){
+				roat_ang+=2;
+      }
+			else{
+				cnt_x++;
+				if(cnt_x==10)
+					flag_x=1;
+			}
+		
+		}
+
 		HAL_Delay (1);
 		
     /* USER CODE END WHILE */
@@ -337,13 +353,29 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 										upper_cnt=UART2_RX_BUF[10];
                     memcpy(&float1, &UART2_RX_BUF[2], sizeof(float));
                     memcpy(&float2, &UART2_RX_BUF[6], sizeof(float));
-									if(float1!=999)
+									
+									if(float1!=-999){
 										rtU.x_diff=float1;
+										if(fabs(float1)>13)
+											rtP.DX_P=0.05;
+										else if(fabs(float1)>3&&fabs(float1)<=13)
+											rtP.DX_P=0.02;//6020
+										else if(fabs(float1)<=3)
+											rtP.DX_P=0.005;//6020
+
+									}
 									else
 										rtU.x_diff=0;
-									if(float2!=999)
+									if(float2!=-999){
 										rtU.y_diff=float2;
-									else
+										if(fabs(float2)>10)
+											rtP.DY_P=2;
+										else if(fabs(float2)>2&&fabs(float2)<=10)
+											rtP.DY_P=0.4;
+										else if(fabs(float2)<=2)
+											rtP.DY_P=0.2;
+									}
+										else
 										rtU.y_diff=0;
 
 									HAL_UART_Transmit_IT(&huart2,UART2_RX_BUF,13);
@@ -416,15 +448,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   {		
 		if(	rtU.status_CH2_5==ANG){
 			set_target(2,1,tar[0]);
-			set_target(2,5,tar[1]+m6020_init);//6020
+			set_target(2,5,tar[1]+m6020_init-yaw*8191/360+roat_ang);//6020
 		}
     cnt[0]++;
 		HAL_IWDG_Refresh(&hiwdg1);//feed the IWG
 		diff[0]=-rtY.Y_OUT;
 		diff[1]=+rtY.X_OUT;
-		
-		tar[0]-=rtY.Y_OUT;
-		tar[1]+=rtY.X_OUT;
+		if(fabs(float2)>1.0f)
+			tar[0]-=rtY.Y_OUT;
+		if(fabs(float1)>0.5f)
+			tar[1]+=rtY.X_OUT;
 
 		HAL_GPIO_WritePin(LED_GPIO_Port,LED_Pin,(GPIO_PinState)1);
 
